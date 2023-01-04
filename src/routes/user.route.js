@@ -3,7 +3,13 @@ const models = require('../db/models/index')
 
 const {User} = models
 
-router.get('/getuser', (req, res) => {
+router.get('/getuser', async (req, res) => {
+    try {
+        const response = await User.findAll();
+        res.json(response)
+    } catch (error) {
+        res.status(500).json({msg:'No hay usuario'})
+    }
     res.json({msg: 'getuser'})
 })
 
