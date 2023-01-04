@@ -26,6 +26,9 @@ server.use((req, res, next) => {
 
 const {user, key} = require('./routes/index')
 
+server.get('/', (req, res) => {
+    res.send('hola desde la api')
+})
 server.use('/user', user)
 server.use('/key', key)
 
